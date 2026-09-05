@@ -583,7 +583,7 @@ input[name="dash-tab"]{display:none}
 
           <div class="panel">
             <div class="ph"><div class="pt">Bed Map</div></div>
-            <div id="dash-bed-mini" style="padding:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:5px"></div>
+            <div id="dash-bed-mini" style="padding:16px;display:flex;flex-wrap:wrap;gap:10px"></div>
           </div>
 
           <details class="dash-more">
@@ -1896,18 +1896,21 @@ async function loadDashboard(){
     }
   }
 
-  /* Bed mini map */
+  /* Bed mini map — each tile now shows the bed number as text, with a
+     light tint + border per status, matching the reference design
+     instead of a bare colored square. */
   var mini = document.getElementById('dash-bed-mini');
   if(mini){
     var FEMALE_WARDS = ['Female','Maternity'];
     mini.innerHTML = allBeds.map(function(b){
       var isFemale = FEMALE_WARDS.indexOf(b.ward||'') >= 0;
-      var col = b.status==='Occupied' ? (isFemale?'#C0398A':'var(--green)')
-              : b.status==='Cleaning' ? 'var(--amber)'
-              : b.status==='Reserved' ? 'var(--blue)'
-              : b.status==='Critical' ? 'var(--red)'
-              : 'var(--border)';
-      return '<div title="Bed '+(b.bed_number||'')+' ('+(b.ward||'')+') — '+b.status+'" style="width:100%;aspect-ratio:1;background:'+col+';border-radius:5px;opacity:.8;cursor:default"></div>';
+      var bg, border, text;
+      if(b.status==='Occupied'){ bg=isFemale?'#FDF0F7':'var(--green-bg)'; border=isFemale?'#F0B8DC':'var(--green-border)'; text=isFemale?'#C0398A':'var(--green)'; }
+      else if(b.status==='Cleaning'){ bg='var(--amber-bg)'; border='var(--amber-border)'; text='var(--amber)'; }
+      else if(b.status==='Reserved'){ bg='var(--blue-bg)'; border='var(--blue-border)'; text='var(--blue)'; }
+      else if(b.status==='Critical'){ bg='var(--red-bg)'; border='var(--red-border)'; text='var(--red)'; }
+      else { bg='var(--surface)'; border='var(--border)'; text='var(--text-secondary)'; }
+      return '<div title="Bed '+esc(b.bed_number||'')+' ('+esc(b.ward||'')+') — '+esc(b.status||'')+'" style="width:54px;height:44px;background:'+bg+';border:1.5px solid '+border+';color:'+text+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:default">'+esc(b.bed_number||'')+'</div>';
     }).join('');
   }
 
