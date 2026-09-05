@@ -137,7 +137,7 @@ main.content{flex:1;padding:20px;background:var(--bg);overflow-y:auto}
 
 /* ── METRICS ── */
 .mg{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
-.mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 16px 14px;box-shadow:var(--sh-xs);transition:all var(--ease)}
+.mc{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 16px 14px;box-shadow:var(--sh-xs);transition:all var(--ease)}
 .mc:hover{box-shadow:var(--sh-sm);transform:translateY(-1px)}
 .mc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .mc-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--text-tertiary)}
@@ -146,7 +146,7 @@ main.content{flex:1;padding:20px;background:var(--bg);overflow-y:auto}
 .mc-sub{font-size:10px;color:var(--text-tertiary);margin-top:5px}
 
 /* ── PANELS ── */
-.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xs)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh-xs)}
 .ph{display:flex;align-items:center;justify-content:space-between;padding:13px 15px;border-bottom:1px solid var(--border)}
 .pt{display:flex;align-items:center;gap:7px;color:var(--text-primary);font-weight:600;font-size:12.5px}
 .pb{display:inline-flex;align-items:center;font-size:9.5px;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.05em}
@@ -1910,7 +1910,7 @@ async function loadDashboard(){
       else if(b.status==='Reserved'){ bg='var(--blue-bg)'; border='var(--blue-border)'; text='var(--blue)'; }
       else if(b.status==='Critical'){ bg='var(--red-bg)'; border='var(--red-border)'; text='var(--red)'; }
       else { bg='var(--surface)'; border='var(--border)'; text='var(--text-secondary)'; }
-      return '<div title="Bed '+esc(b.bed_number||'')+' ('+esc(b.ward||'')+') — '+esc(b.status||'')+'" style="width:54px;height:44px;background:'+bg+';border:1.5px solid '+border+';color:'+text+';border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:default">'+esc(b.bed_number||'')+'</div>';
+      return '<div title="Bed '+esc(b.bed_number||'')+' ('+esc(b.ward||'')+') — '+esc(b.status||'')+'" style="width:54px;height:54px;background:'+bg+';border:1.5px solid '+border+';color:'+text+';border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:default">'+esc(b.bed_number||'')+'</div>';
     }).join('');
   }
 
