@@ -281,10 +281,12 @@ body[data-role="receptionist"] .reception-home-only{display:flex}
 /* ── ENHANCED OWNER DASHBOARD ── */
 .mg6{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .mg3b{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
-.mc-green{border-color:var(--green-border)!important;background:var(--green-bg)!important}
-.mc-amber{border-color:var(--amber-border)!important;background:var(--amber-bg)!important}
-.mc-red{border-color:var(--red-border)!important;background:var(--red-bg)!important}
-.mc-blue{border-color:var(--blue-border)!important;background:var(--blue-bg)!important}
+/* Cards stay plain white always — only the number itself carries color,
+   matching the reference design (no tinted card backgrounds). */
+.mc-green .mc-val{color:var(--green)}
+.mc-amber .mc-val{color:var(--amber)}
+.mc-red .mc-val{color:var(--red)}
+.mc-blue .mc-val{color:var(--blue)}
 /* ACTIVITY FEED */
 .activity-row{display:flex;gap:10px;padding:11px 14px;border-bottom:1px solid rgba(228,224,216,.5)}
 .activity-row:last-child{border-bottom:none}
@@ -590,9 +592,9 @@ input[name="dash-tab"]{display:none}
               <div class="mc mc-green"><div class="mc-lbl">Occupied Beds</div><div class="mc-val" id="dm-occupied">—</div><div class="mc-sub">of <span id="dm-total-beds">—</span> total</div></div>
               <div class="mc"><div class="mc-lbl">Today Admissions</div><div class="mc-val" id="dm-today-adm">—</div><div class="mc-sub">new today</div></div>
               <div class="mc"><div class="mc-lbl">Today Discharges</div><div class="mc-val" id="dm-today-dis">—</div><div class="mc-sub">discharged today</div></div>
-              <div class="mc mc-blue"><div class="mc-lbl">Current Billing</div><div class="mc-val" id="dm-current-billing">—</div><div class="mc-sub">active admissions total</div></div>
+              <div class="mc"><div class="mc-lbl">Current Billing</div><div class="mc-val" id="dm-current-billing">—</div><div class="mc-sub">active admissions total</div></div>
               <div class="mc mc-green"><div class="mc-lbl">Monthly Revenue</div><div class="mc-val" id="dm-monthly-revenue">—</div><div class="mc-sub">month to date</div></div>
-              <div class="mc mc-blue"><div class="mc-lbl">Total Collection</div><div class="mc-val" id="dm-collection">—</div><div class="mc-sub">payments this month</div></div>
+              <div class="mc"><div class="mc-lbl">Total Collection</div><div class="mc-val" id="dm-collection">—</div><div class="mc-sub">payments this month</div></div>
               <div class="mc mc-red"><div class="mc-lbl">Expenses</div><div class="mc-val" id="dm-expenses">—</div><div class="mc-sub">this month</div></div>
               <div class="mc"><div class="mc-lbl">Net Revenue</div><div class="mc-val" id="dm-net">—</div><div class="mc-sub">revenue − expenses</div></div>
             </div>
